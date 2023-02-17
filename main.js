@@ -5,10 +5,15 @@ const mobileMenu = document.querySelector('.mobile-menu')
 const menuShoppingCart = document.querySelector( '.navbar-shopping-cart')
 const shoppingCartContainer = document.querySelector('#shoppingCartContainer')
 const cardsContainer = document.querySelector('.cards-container')
+const productDetailContainer = document.querySelector('#productDetail')
+const productDetailCloseIcon = document.querySelector('.product-detail-close')
 
 navEmail.addEventListener('click', toggleDesktopMenu);
 menuIcon.addEventListener('click', toggleMobileMenu)
 menuShoppingCart.addEventListener( 'click', toggleMenuShoppingCart)
+productDetailCloseIcon.addEventListener('click', closeProductDetailAside)
+
+
 
 
 function toggleDesktopMenu() {
@@ -18,13 +23,25 @@ function toggleDesktopMenu() {
 
 function toggleMobileMenu() {
     shoppingCartContainer.classList.add('inactive')
+    productDetailContainer.classList.add('inactive')
     mobileMenu.classList.toggle('inactive');
 }
 
 function toggleMenuShoppingCart() {
     desktopMenu.classList.add('inactive')
     mobileMenu.classList.add('inactive')
+    productDetailContainer.classList.add('inactive')
     shoppingCartContainer.classList.toggle('inactive')
+}
+
+function openProductDetailAside() {
+    shoppingCartContainer.classList.add('inactive')
+    mobileMenu.classList.add('inactive')
+    productDetailContainer.classList.remove('inactive')
+}
+
+function closeProductDetailAside() {
+    productDetailContainer.classList.add('inactive')
 }
 
 const productList = [];
@@ -57,6 +74,8 @@ function renderProducts(nameArray) {
         const productImg = document.createElement('img');
         productImg.setAttribute('src', product.image);
 
+        productImg.addEventListener('click', openProductDetailAside)
+
         const productInfo = document.createElement('div');
         productInfo.classList.add('product-info');
 
@@ -83,7 +102,5 @@ function renderProducts(nameArray) {
         cardsContainer.append (productCard)
     }
 }
-
-console.log(productList);
 
 renderProducts(productList)

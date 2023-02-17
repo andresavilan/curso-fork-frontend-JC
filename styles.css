@@ -172,12 +172,11 @@
 /*!   productDetail     */
 
 #productDetail {
-  width: 360px;
   padding-bottom: 24px;
   position: absolute;
   right: 0;
 }
-#productDetail-close {
+.product-detail-close {
   background: var(--white);
   width: 14px;
   height: 14px;
@@ -358,11 +357,6 @@
   }
   
   @media (max-width: 640px) {
-    aside {
-      width: 100%;
-    }}
-
-  @media (max-width: 640px) {
     .menu {
       display: block;
     }
@@ -375,6 +369,9 @@
 
     .desktop-menu{
         display: none;
+    }
+    aside {
+      width: 100%;
     }
   }
 
